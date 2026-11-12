@@ -1,1 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Paws & Care | Pet Landing Page</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f7f9f8;
+            color: #222;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            width: 100%;
+            background: white;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #0f4b52;
+        }
+
+        .logo span {
+            color: #e89a7a;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        nav ul li a:hover {
+            color: #e89a7a;
+        }
+
+        .nav-btn {
+            background: #0f4b52;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 25px;
+            text-decoration: none;
+        }
+
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 550px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 8%;
+            gap: 40px;
+        }
+
+        .hero-text {
+            width: 50%;
+        }
+
+        .hero-text h1 {
+            font-size: 55px;
+            color: #0f4b52;
+            margin-bottom: 20px;
+        }
+
+        .hero-text h1 span {
+            color: #e89a7a;
+        }
+
+        .hero-text p {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background: #e89a7a;
+            color: white;
+            text-decoration: none;
+            padding: 14px 25px;
+            border-radius: 30px;
+        }
+
+        .hero-image {
+            width: 50%;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 30px;
+        }
+
+
+        /* ================= SERVICES ================= */
+
+        .services {
+            padding: 70px 8%;
+            text-align: center;
+            background: white;
+        }
+
+        .section-title {
+            font-size: 36px;
+            color: #0f4b52;
+            margin-bottom: 15px;
+        }
+
+        .section-text {
+            color: #777;
+            margin-bottom: 40px;
+        }
+
+        .service-container {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+        }
+
+        .service-card {
+            width: 300px;
+            padding: 30px 20px;
+            border-radius: 15px;
+            background: #f6f7f8;
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+
+        .service-card h3 {
+            color: #0f4b52;
+            margin: 15px 0;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .icon {
+            font-size: 45px;
+        }
+
+
+        /* ================= SLIDER ================= */
+
+        .pets-slider {
+            padding: 70px 8%;
+            text-align: center;
+        }
+
+        .slider {
+            width: 100%;
+            max-width: 900px;
+            height: 450px;
+            margin: 40px auto;
+            overflow: hidden;
+            border-radius: 25px;
+            position: relative;
+        }
+
+        .slides {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px;
+            color: white;
+            text-align: left;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        }
+
+        .slide-content h2 {
+            margin-bottom: 8px;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.8);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        .prev {
+            left: 20px;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+
+        /* ================= ABOUT ================= */
+
+        .about {
+            padding: 70px 8%;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            background: white;
+        }
+
+        .about-image,
+        .about-text {
+            width: 50%;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 25px;
+        }
+
+        .about-text h2 {
+            font-size: 38px;
+            color: #0f4b52;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+
+        /* ================= CTA ================= */
+
+        .cta {
+            padding: 70px 8%;
+            text-align: center;
+            background: #0f4b52;
+            color: white;
+        }
+
+        .cta h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            margin-bottom: 25px;
+        }
+
+        .cta a {
+            display: inline-block;
+            background: #e89a7a;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #08383d;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer p {
+            color: #ddd;
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 768px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                padding: 50px 5%;
+            }
+
+            .hero-text,
+            .hero-image {
+                width: 100%;
+            }
+
+            .hero-text h1 {
+                font-size: 40px;
+            }
+
+            .service-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about {
+                flex-direction: column;
+                padding: 50px 5%;
+            }
+
+            .about-image,
+            .about-text {
+                width: 100%;
+            }
+
+            .slider {
+                height: 300px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <div class="logo">
+            PAWS<span>&</span>CARE
+        </div>
+
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Pets</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+
+        <a href="#" class="nav-btn">Contact Us</a>
+
+    </nav>
+
+
+
+    <!-- ================= HERO SECTION ================= -->
+
+    <section class="hero">
+
+        <div class="hero-text">
+
+            <h1>
+                Because Every Pet
+                Deserves <span>Love</span>
+            </h1>
+
+            <p>
+                We provide loving care, quality services and
+                everything your furry friends need for a happy
+                and healthy life.
+            </p>
+
+            <a href="#" class="hero-btn">
+                Explore Our Pets
+            </a>
+
+        </div>
+
+
+        <div class="hero-image">
+
+            <!-- IMAGE CHANGE HERE -->
+
+            <img src="https://images.unsplash.com/photo-1558788353-f76d92427f16">
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= SERVICES ================= -->
+
+    <section class="services">
+
+        <h2 class="section-title">
+            Our Pet Services
+        </h2>
+
+        <p class="section-text">
+            Everything your lovely pets need in one place.
+        </p>
+
+
+        <div class="service-container">
+
+
+            <div class="service-card">
+
+                <div class="icon">🐶</div>
+
+                <h3>Pet Care</h3>
+
+                <p>
+                    Professional and loving care for your pets.
+                </p>
+
+            </div>
+
+
+
+            <div class="service-card">
+
+                <div class="icon">🏥</div>
+
+                <h3>Health Care</h3>
+
+                <p>
+                    Keep your furry friend healthy and happy.
+                </p>
+
+            </div>
+
+
+
+            <div class="service-card">
+
+                <div class="icon">🛁</div>
+
+                <h3>Pet Grooming</h3>
+
+                <p>
+                    Give your pet a clean and beautiful look.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= JAVASCRIPT SLIDER ================= -->
+
+    <section class="pets-slider">
+
+        <h2 class="section-title">
+            Meet Our Lovely Pets
+        </h2>
+
+
+        <div class="slider">
+
+
+            <div class="slides">
+
+
+                <!-- SLIDE 1 -->
+
+                <div class="slide active">
+
+                    <!-- CHANGE IMAGE HERE -->
+
+                    <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb">
+
+                    <div class="slide-content">
+
+                        <h2>Lovely Dogs</h2>
+
+                        <p>
+                            Your loyal and loving best friend.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SLIDE 2 -->
+
+                <div class="slide">
+
+                    <!-- CHANGE IMAGE HERE -->
+
+                    <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba">
+
+                    <div class="slide-content">
+
+                        <h2>Beautiful Cats</h2>
+
+                        <p>
+                            Cute, playful and full of love.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SLIDE 3 -->
+
+                <div class="slide">
+
+                    <!-- CHANGE IMAGE HERE -->
+
+                    <img src="https://images.unsplash.com/photo-1548767797-d8c844163c4c">
+
+                    <div class="slide-content">
+
+                        <h2>Happy Pets</h2>
+
+                        <p>
+                            Giving every pet the love they deserve.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- PREVIOUS BUTTON -->
+
+            <button class="slider-btn prev">
+                ❮
+            </button>
+
+
+            <!-- NEXT BUTTON -->
+
+            <button class="slider-btn next">
+                ❯
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <section class="about">
+
+
+        <div class="about-image">
+
+            <!-- CHANGE IMAGE HERE -->
+
+            <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e">
+
+        </div>
+
+
+        <div class="about-text">
+
+            <h2>
+                We Love Animals
+            </h2>
+
+            <p>
+                Our mission is to provide the best care,
+                love and support for every animal.
+            </p>
+
+            <p>
+                From pet care to grooming, we make sure
+                your furry friend feels safe and happy.
+            </p>
+
+            <a href="#" class="hero-btn">
+                Learn More
+            </a>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ================= CALL TO ACTION ================= -->
+
+    <section class="cta">
+
+        <h2>
+            Give Your Pet The Best Care
+        </h2>
+
+        <p>
+            Join our happy pet family today.
+        </p>
+
+        <a href="#">
+            Get Started
+        </a>
+
+    </section>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 PAWS & CARE | All Rights Reserved
+        </p>
+
+    </footer>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        // ALL SLIDES
+
+        const slides = document.querySelectorAll(".slide");
+
+
+        // BUTTONS
+
+        const nextBtn = document.querySelector(".next");
+
+        const prevBtn = document.querySelector(".prev");
+
+
+        // CURRENT SLIDE NUMBER
+
+        let currentSlide = 0;
+
+
+        // SHOW SLIDE FUNCTION
+
+        function showSlide(index) {
+
+            // REMOVE ACTIVE CLASS
+
+            slides.forEach(function(slide) {
+
+                slide.classList.remove("active");
+
+            });
+
+
+            // ADD ACTIVE CLASS
+
+            slides[index].classList.add("active");
+
+        }
+
+
+
+        // NEXT BUTTON
+
+        nextBtn.addEventListener("click", function() {
+
+            currentSlide++;
+
+            if (currentSlide >= slides.length) {
+
+                currentSlide = 0;
+
+            }
+
+            showSlide(currentSlide);
+
+        });
+
+
+
+        // PREVIOUS BUTTON
+
+        prevBtn.addEventListener("click", function() {
+
+            currentSlide--;
+
+            if (currentSlide < 0) {
+
+                currentSlide = slides.length - 1;
+
+            }
+
+            showSlide(currentSlide);
+
+        });
+
+
+
+        // AUTOMATIC SLIDER
+
+        setInterval(function() {
+
+            currentSlide++;
+
+            if (currentSlide >= slides.length) {
+
+                currentSlide = 0;
+
+            }
+
+            showSlide(currentSlide);
+
+        }, 4000);
+
+
+    </script>
+
+
+</body>
+</html>
